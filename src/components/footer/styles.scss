@@ -119,12 +119,12 @@
   }
   .bottom {
       border-top: 1px solid rgba(255, 255, 255, 0.08);
-      padding: 16px 0;
+      padding: 18px 0;
       @include flex(center, space-between);
       .social-item {
           @include flexitem;
           gap: 24px;
-          margin-right: 75px;
+          margin-right: 220px;
           li {             
               margin-right: 0;
               a {
@@ -140,6 +140,11 @@
                   }
               }
           }
+
+          @include tablet {
+              margin-right: 0;
+              margin-bottom: 45px;
+          }
       }
       .copy-right {
           color: #94a3b8;
@@ -149,10 +154,11 @@
 
       @include mobile {
         flex-direction: column;
-        gap: 12px;
+        gap: 14px;
         text-align: center;
         .social-item {
             margin-right: 0;
+            margin-bottom: 50px;
         }
       }
   }
@@ -283,7 +289,7 @@
 
 #scroll-top {
     position: fixed;
-    bottom: 24px;
+    bottom: 75px;
     right: 20px;
     width: 44px;
     height: 44px;
