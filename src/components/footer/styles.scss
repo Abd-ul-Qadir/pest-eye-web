@@ -1,0 +1,316 @@
+@use '../../scss/' as *;
+.footer {
+  background: url('../../assets/images/background/bg-footer.png') center center no-repeat;
+  background-size: cover;
+  .footer-inner {
+      padding: 61px 0 40px;
+  }
+  .widget {
+
+    @include tablet {
+        padding-right: 0 !important;
+        padding-bottom: 0;
+        margin-left: 0 !important;
+    }
+      &.widget-infor {
+          padding-right: 30%;
+          margin-top: 0;
+          .logo {
+              margin-bottom: 13px;
+          }
+          .content {
+              font-size: 16px;
+              line-height: 26px;
+              color: #FFFFFF;
+          }
+          @include tablet {
+            margin-bottom: 40px
+          }
+      }
+      &.widget-menu {
+          .widget-title {
+              color: #21e786;
+              font-size: 15px;
+              font-weight: 700;
+              margin-bottom: 18px;
+              letter-spacing: 0.08em;
+          }
+
+          .footer-nav-list {
+              display: grid;
+              grid-template-columns: repeat(2, minmax(130px, 1fr));
+              gap: 12px 28px;
+              padding: 0;
+              margin: 0;
+              list-style: none;
+
+              li {
+                  padding: 0;
+                  margin: 0;
+
+                  a {
+                      font-size: 15px;
+                      line-height: 24px;
+                      color: #cbd5e1;
+                      text-decoration: none;
+                      transition: all 0.2s ease;
+                      display: inline-block;
+
+                      &:hover {
+                          color: #21e786;
+                          transform: translateX(4px);
+                      }
+                  }
+              }
+          }
+
+          @include mobile {
+              margin-top: 20px;
+          }
+      }
+      &.widget-subcribe {
+          margin-left: -14px;
+          margin-right: 23px;
+          .widget-title {
+              margin-bottom: 20px;
+          }
+          #subscribe-form {
+              position: relative;
+              input {
+                  width: 100%;
+                  padding: 15px 46px 15px 23px;
+                  font-size: 16px;
+                  line-height: 26px;
+                  color: #C2C3C5;
+                  &::placeholder {
+                      font-size: 16px;
+                      color: #C2C3C5;
+                  }
+                  &:focus {
+                      border-color: var(--primary-color3);
+                  }
+              }
+
+              .tf-button {
+                  right: 0;
+                  position: absolute;
+                  height: 100%;
+                  padding: 0 35px;
+                  background-color: var(--primary-color5);
+                  color: #040B11;
+                  &::before {
+                      background-color: transparent;
+                  }
+                  &:hover {
+                      border-color: #008000;
+                      background-color: transparent;
+                      color: #fff;
+                  }
+              }
+          }
+          
+      }
+      .widget-title {
+          font-size: 16px;
+          line-height: 24px;
+          color: #fff ;
+          margin-bottom: 12px;
+      }
+  }
+  .bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 16px 0;
+      @include flex(center, space-between);
+      .social-item {
+          @include flexitem;
+          gap: 24px;
+          margin-right: 75px;
+          li {             
+              margin-right: 0;
+              a {
+                  font-size: 18px;
+                  color: #21e786;
+                  display: inline-flex;
+                  align-items: center;
+                  justify-content: center;
+                  transition: all 0.25s ease;
+                  &:hover {
+                      color: #ffffff;
+                      transform: translateY(-2px);
+                  }
+              }
+          }
+      }
+      .copy-right {
+          color: #94a3b8;
+          font-size: 14px;
+          line-height: 22px;
+      }
+
+      @include mobile {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+        .social-item {
+            margin-right: 0;
+        }
+      }
+  }
+  &.style-2 {
+      text-align: center;
+      .title {
+          color: #fff;
+          margin-bottom: 10px;
+      }
+      .content {
+          font-family: 'Inter';
+          font-weight: 400;
+          font-size: 18px;
+          line-height: 28px;
+          color: #C2C3C5;
+          margin-bottom: 39px;
+      }
+      .group-btn {
+          margin-left: 2px;
+          margin-bottom: 40px;
+          .tf-button {
+              padding: 12px 24px;
+              margin-right: 20px;
+
+              @include w-402 {
+                margin-right: 0;
+                width: 70%;
+              }
+              i {
+                  margin-right: 10px;
+              }
+              &:last-child {
+                  margin-right: 0;
+              }
+              &.discord {
+                  background-color: #5865F2;
+                  color: #fff;
+                  &::before {
+                      background-color: #008000 ;
+                  }
+              }
+          }
+      }
+      form {
+          max-width: 690px;
+          margin: 0 auto;
+          position: relative;
+          margin-bottom: 31px;
+          input {
+              padding: 17px 24px 13px;
+              color: #C2C3C5;
+              &::placeholder {
+                  color: #C2C3C5;
+              }
+          }
+          .tf-button {
+              position: absolute;
+              right: 0;
+              top: 0;
+              height: 100%;
+              padding: 0 36px;
+          }
+      }
+      .social-item {
+          @include flex(center,center);
+          li {
+              width: 50px;
+              height: 50px;
+              @include flex(center,center);
+              margin-right: 20px;
+              background-color: rgba(194, 195, 197, 0.15);
+              @include transition3;
+              &:last-child {
+                  margin-right: 0;
+              }
+              a {
+                  color: #fff;
+              }
+              &:hover {
+                  background-color: #008000;
+                  cursor: pointer;
+              }
+          }
+      }
+      .footer-inner {
+          padding-bottom: 79px;
+      }
+      .bottom-inner {
+          border-top: 1px solid #434343;
+      }
+      .bottom {
+          border: none;
+          .content-left {
+              @include flex(center,left);
+              img {
+                  margin-right: 61px;
+              }
+
+              @include mobile {
+                flex-wrap: wrap
+              }
+          }
+          .menu-bottom {
+              @include flex(center,left);
+              @include mobile {
+                flex-wrap: wrap
+              }
+              li {
+                  margin-right: 47px;
+                  padding: 0;
+                  a {
+                      font-size: 14px;
+                      line-height: 22px;
+                      color: #C2C3C5; 
+                      &:hover {
+                          color: var(--primary-color5);
+                      }
+                  }
+                  &:last-child {
+                      margin-right: 0;
+                  }
+              }
+          }
+      }
+  }
+}
+
+
+#scroll-top {
+    position: fixed;
+    bottom: 24px;
+    right: 20px;
+    width: 44px;
+    height: 44px;
+    line-height: 44px;
+    border-radius: 50%;
+    background-color: #21e786;
+    box-shadow: 0 4px 18px rgba(33, 231, 134, 0.45);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    z-index: 99999;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    text-decoration: none;
+
+    &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 24px rgba(33, 231, 134, 0.7);
+        background-color: #10b981;
+    }
+
+    &::after {
+        content: '\f106'; /* FontAwesome chevron/angle up */
+        font-family: 'Font Awesome 5 Pro', 'Font Awesome 5 Free', 'FontAwesome', sans-serif;
+        font-size: 18px;
+        font-weight: 900;
+        color: #060b13;
+    }
+}

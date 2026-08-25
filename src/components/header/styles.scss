@@ -1,0 +1,354 @@
+@use '../../scss/' as *;
+
+/* ==========================================================================
+   Header & Navbar Styling
+   ========================================================================== */
+
+.header {
+    background-color: rgba(6, 12, 20, 0.88);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding-right: 0 !important;
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+    transition: all 0.3s ease;
+
+    #site-header-inner {
+        @include flex(center, space-between);
+        min-height: 80px;
+
+        #site-logo {
+            flex-shrink: 0;
+            margin-right: 48px;
+            display: flex;
+            align-items: center;
+
+            .main-logo img {
+                height: 42px;
+                width: auto;
+                object-fit: contain;
+                transition: transform 0.3s ease;
+
+                &:hover {
+                    transform: scale(1.03);
+                }
+            }
+        }
+
+        #main-nav {
+            flex-grow: 1;
+        }
+
+        .header-right {
+            margin-left: auto;
+            display: inline-flex;
+            align-items: center;
+            gap: 14px;
+
+            .mode-switch {
+                margin-right: 8px;
+            }
+
+            .tf-button {
+                padding: 10px 22px;
+                border-radius: 30px;
+                font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+                font-weight: 600;
+                font-size: 14px;
+                letter-spacing: 0.03em;
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+                text-decoration: none;
+                position: relative;
+                overflow: hidden;
+
+                i {
+                    font-size: 14px;
+                    margin-right: 2px;
+                }
+
+                &.discord {
+                    background: rgba(255, 255, 255, 0.06);
+                    border: 1px solid rgba(255, 255, 255, 0.14);
+                    color: #f1f5f9;
+
+                    &:hover {
+                        background: rgba(33, 231, 134, 0.12);
+                        border-color: #21e786;
+                        color: #21e786;
+                        transform: translateY(-2px);
+                        box-shadow: 0 4px 15px rgba(33, 231, 134, 0.2);
+                    }
+                }
+
+                &.connect {
+                    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+                    color: #ffffff;
+                    border: 1px solid rgba(33, 231, 134, 0.3);
+                    box-shadow: 0 4px 18px rgba(16, 185, 129, 0.35);
+
+                    &:hover {
+                        background: linear-gradient(135deg, #21e786 0%, #10b981 100%);
+                        color: #060b13;
+                        transform: translateY(-2px);
+                        box-shadow: 0 6px 24px rgba(33, 231, 134, 0.5);
+                    }
+                }
+
+                @include mobile {
+                    padding: 8px 16px;
+                    font-size: 13px;
+                }
+            }
+
+            @include tablet {
+                display: flex;
+                align-items: center;
+            }
+        }
+    }
+
+    &.is-fixed {
+        background-color: rgba(6, 12, 20, 0.96);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-bottom: 1px solid rgba(33, 231, 134, 0.18);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(33, 231, 134, 0.08);
+
+        #site-header-inner {
+            min-height: 72px;
+        }
+    }
+
+    @include tablet {
+        #site-header-inner {
+            padding: 12px 0;
+            min-height: 65px;
+        }
+    }
+}
+
+@keyframes headerSlideDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* ==========================================================================
+   Main Desktop Nav
+   ========================================================================== */
+
+#main-nav {
+    ul {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items: center;
+
+        li {
+            position: relative;
+            list-style: none;
+        }
+    }
+
+    >ul {
+        >li {
+            padding: 26px 28px 26px 0;
+
+            @include desktop-1200 {
+                padding: 26px 18px 26px 0;
+            }
+
+            >a {
+                font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+                font-size: 15px;
+                font-weight: 600;
+                line-height: 22px;
+                color: #94a3b8;
+                position: relative;
+                display: block;
+                letter-spacing: 0.02em;
+                text-decoration: none;
+                transition: all 0.25s ease;
+
+                &:hover {
+                    color: #21e786;
+                }
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    width: 0%;
+                    height: 2px;
+                    bottom: -6px;
+                    left: 0;
+                    background: linear-gradient(90deg, #21e786, #06b6d4);
+                    border-radius: 2px;
+                    transition: width 0.3s ease;
+                }
+            }
+
+            &:hover > a::after {
+                width: 100%;
+            }
+
+            &.active > a {
+                color: #21e786;
+                font-weight: 700;
+
+                &::after {
+                    width: 100%;
+                }
+            }
+
+            &:last-child {
+                padding-right: 0;
+            }
+        }
+    }
+}
+
+/* ==========================================================================
+   Mobile Nav Drawer & Hamburger
+   ========================================================================== */
+
+#main-nav {
+    @include tablet {
+        margin: 0 auto;
+        width: 75%;
+        max-width: 320px;
+        height: 100vh;
+        overflow-y: auto;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 999999;
+        background-color: rgba(8, 15, 26, 0.98);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+        box-shadow: 10px 0 35px rgba(0, 0, 0, 0.6);
+        border-right: 1px solid rgba(255, 255, 255, 0.08);
+        transform: translateX(-100%);
+        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        padding: 80px 24px 40px;
+
+        &.active {
+            transform: translateX(0);
+        }
+
+        .menu {
+            flex-direction: column;
+            align-items: flex-start;
+            width: 100%;
+
+            li {
+                width: 100%;
+                padding: 12px 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+
+                a {
+                    font-size: 16px;
+                    color: #cbd5e1;
+                    padding: 6px 0;
+                    display: block;
+                    width: 100%;
+
+                    &.active {
+                        color: #21e786;
+                        font-weight: 700;
+                    }
+                }
+
+                &:last-child {
+                    border-bottom: none;
+                }
+            }
+        }
+    }
+}
+
+/* Hamburger Button */
+.mobile-button {
+    display: none;
+    position: relative;
+    width: 28px;
+    height: 24px;
+    background-color: transparent;
+    cursor: pointer;
+    z-index: 1000000;
+
+    span, &::before, &::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        left: 0;
+        background-color: #21e786;
+        border-radius: 2px;
+        transition: all 0.3s ease;
+    }
+
+    &::before {
+        top: 3px;
+    }
+
+    span {
+        top: 11px;
+    }
+
+    &::after {
+        top: 19px;
+    }
+
+    &.active {
+        span {
+            opacity: 0;
+            transform: scale(0);
+        }
+        &::before {
+            top: 11px;
+            transform: rotate(45deg);
+        }
+        &::after {
+            top: 11px;
+            transform: rotate(-45deg);
+        }
+    }
+
+    @include tablet {
+        display: block;
+    }
+}
+
+/* ==========================================================================
+   Logo Dark/Light Mode
+   ========================================================================== */
+
+.logo-light {
+    display: block;
+}
+
+.logo-dark {
+    display: none;
+}
+
+.is_dark {
+    .logo-light {
+        display: none;
+    }
+    
+    .logo-dark {
+        display: block;
+    } 
+}
