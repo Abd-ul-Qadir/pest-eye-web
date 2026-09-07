@@ -21,6 +21,7 @@ async def health_check():
     return {"status": "ok", "message": "PestEYE API is running"}
 
 @app.post("/predict")
+@app.post("/predict/")
 async def predict(file: UploadFile = File(...)):
     try:
         with tempfile.NamedTemporaryFile(delete=False, suffix=".jpg") as tmp:

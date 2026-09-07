@@ -65,9 +65,9 @@ function Banner01({ data }) {
             const formData = new FormData();
             formData.append('file', file);
 
-            const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:8000';
+            const baseUrl = (process.env.REACT_APP_API_URL || 'http://localhost:8000').replace(/\/+$/, '');
             const response = await axios.post(
-                `${apiUrl}/predict`,
+                `${baseUrl}/predict`,
                 formData,
                 {
                     headers: { 'Content-Type': 'multipart/form-data' },
