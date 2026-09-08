@@ -6,9 +6,8 @@
 **Tech Stack:**
 | Layer | Technology |
 |---|---|
-| Frontend | React (JavaScript) |
+| Frontend | React.js |
 | Styling | SCSS, CSS |
-| Backend/AI logic | Python (likely the pest-identification model) |
-| Markup | HTML |
-| Containerization | Dockerfile |
+| Deep Learning | PyTorch — EfficientNet-B0 |
+| Backend | FAST API |
 | Hosting/Deployment | Netlify |
